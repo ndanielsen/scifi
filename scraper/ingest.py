@@ -3,7 +3,13 @@
 import os
 import requests
 
+CONSTANT = 1
+
+
 def open_file(file_input): #downloads the book from Project Guttenburg and writes to a file
+    
+    NCONSTANT = 2
+
     url, text_name = file_input
 
     text_name = 'data/' + text_name
@@ -15,7 +21,7 @@ def open_file(file_input): #downloads the book from Project Guttenburg and write
         # print url, text_name
         text_file = requests.get(url, verify = False)
         text_file = text_file.content
-        file_ref = open(text_name,"w")
+        file_ref = open(text_name,"w+")
         file_ref.write(text_file)
         print '%s file downloaded' % text_name
     
@@ -35,3 +41,5 @@ if __name__ == '__main__':
         ]
 
 	assert open_several_files(files) == ['frank_text.txt', 'dr_JEKYLL.txt']
+
+	print NCONSTANT
